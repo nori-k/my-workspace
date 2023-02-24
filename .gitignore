@@ -3,6 +3,9 @@
 # compiled output
 dist
 tmp
+static
+output.html
+docker
 /out-tsc
 
 # dependencies

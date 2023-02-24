@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "generate:client": "prisma generate",
+    "generate:migration": "prisma migrate dev"
+  }
+}

@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  post-service-db:
+    image: postgres:14.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+      TZ: Asia/Tokyo
+    ports:
+      - '15432:5432'
+    volumes:
+      - ./docker/postgresql/data1:/var/lib/postgresql/data
+      - ./docker/postgresql/initdb1:/docker-entrypoint-initdb.d
+
+  user-service-db:
+    image: postgres:14.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+      TZ: Asia/Tokyo
+    ports:
+      - '25432:5432'
+    volumes:
+      - ./docker/postgresql/data2:/var/lib/postgresql/data
+      - ./docker/postgresql/initdb2:/docker-entrypoint-initdb.d

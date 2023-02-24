@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // * https://github.com/prisma/prisma/issues/7470#issuecomment-873598065
+  output   = "../../../node_modules/@prisma/post-service-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POST_DATABASE_URL")
+}
+
+model Post {
+  id    Int     @id @default(autoincrement())
+  title String
+  text  String?
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+}
